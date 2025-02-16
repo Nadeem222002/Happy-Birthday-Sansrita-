@@ -146,7 +146,8 @@
             const allOut = [...flames].every(f => f.style.display === 'none');
             if (allOut) {
                 document.getElementById('message').style.display = 'block';
-                document.getElementById('song').play();
+                const song = document.getElementById('song');
+                song.play().catch(err => console.error('Audio playback failed:', err));
             }
         }
 
