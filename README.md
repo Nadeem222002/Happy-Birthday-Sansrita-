@@ -1,4 +1,3 @@
-# Happy-Birthday-Sansrita-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,7 +80,7 @@
     <h1>🎂 Happy Birthday Sansrita! 🎉</h1>
     <div id="message">🎊 Wishing you a day as magical as you are! May your dreams float higher than these balloons and your happiness shine brighter than these candles! 🎊</div>
 
-    <audio id="song" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" loop></audio>
+    <audio id="song" src="https://drive.google.com/uc?id=1cft6GsrpnyIqnryTmmdbHta7AHG93NnI&export=download" loop></audio>
 
     <script>
         async function requestMicrophone() {
@@ -100,7 +99,7 @@
                 function analyzeSound() {
                     analyser.getByteFrequencyData(dataArray);
                     const volume = dataArray.reduce((a, b) => a + b, 0) / bufferLength;
-                    if (volume > 50) { // Lowered threshold to detect blowing better
+                    if (volume > 50) {
                         blowOutCandles();
                     }
                     requestAnimationFrame(analyzeSound);
