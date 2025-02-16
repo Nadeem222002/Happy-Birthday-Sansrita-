@@ -80,7 +80,10 @@
     <h1>🎂 Happy Birthday Sansrita! 🎉</h1>
     <div id="message">🎊 Wishing you a day as magical as you are! May your dreams float higher than these balloons and your happiness shine brighter than these candles! 🎊</div>
 
-    <audio id="song" src="https://drive.google.com/uc?id=1cft6GsrpnyIqnryTmmdbHta7AHG93NnI&export=download" loop></audio>
+    <audio id="song" controls>
+        <source src="https://docs.google.com/uc?export=download&id=1cft6GsrpnyIqnryTmmdbHta7AHG93NnI" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
         async function requestMicrophone() {
@@ -157,4 +160,3 @@
     </script>
 </body>
 </html>
-
