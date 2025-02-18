@@ -8,9 +8,10 @@
         body {
             margin: 0;
             overflow: hidden;
-            background-color: #ffccff;
+            background: url('https://via.placeholder.com/800x600') center/cover no-repeat;
             text-align: center;
             font-family: 'Comic Sans MS', cursive, sans-serif;
+            position: relative;
         }
 
         h1 {
@@ -27,7 +28,6 @@
             bottom: -100px;
             width: 50px;
             height: 70px;
-            background: radial-gradient(circle at 30% 30%, #ff4d4d, #c40000);
             border-radius: 50% 50% 60% 60%;
             animation: floatBalloon 5s linear infinite;
         }
@@ -46,6 +46,8 @@
             border: 2px solid #000;
             border-radius: 5px;
             z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .flame {
@@ -80,8 +82,8 @@
     <h1>🎂 Happy Birthday Sansrita! 🎉</h1>
     <div id="message">🎊 Wishing you a day as magical as you are! May your dreams float higher than these balloons and your happiness shine brighter than these candles! 🎊</div>
 
-    <audio id="song" controls>
-        <source src="https://drive.google.com/uc?id=1cft6GsrpnyIqnryTmmdbHta7AHG93NnI" type="audio/mpeg">
+    <audio id="song" autoplay>
+        <source src="/mnt/data/happy-birthday-155461.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -102,7 +104,7 @@
                 function analyzeSound() {
                     analyser.getByteFrequencyData(dataArray);
                     const volume = dataArray.reduce((a, b) => a + b, 0) / bufferLength;
-                    if (volume > 50) {
+                    if (volume > 60) {
                         blowOutCandles();
                     }
                     requestAnimationFrame(analyzeSound);
@@ -121,15 +123,17 @@
                 balloon.style.left = `${Math.random() * 100}vw`;
                 balloon.style.background = `radial-gradient(circle at 30% 30%, hsl(${Math.random() * 360}, 70%, 60%), hsl(${Math.random() * 360}, 70%, 40%))`;
                 balloon.style.animationDuration = `${3 + Math.random() * 3}s`;
+                balloon.style.width = `${30 + Math.random() * 40}px`;
+                balloon.style.height = `${50 + Math.random() * 60}px`;
                 document.body.appendChild(balloon);
             }
         }
 
         function createCandles() {
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 5; i++) {
                 const candle = document.createElement('div');
                 candle.className = 'candle';
-                candle.style.left = `${10 + i * 8}vw`;
+                candle.style.left = `calc(50% - ${(i - 2) * 30}px)`;
 
                 const flame = document.createElement('div');
                 flame.className = 'flame';
@@ -149,8 +153,6 @@
             const allOut = [...flames].every(f => f.style.display === 'none');
             if (allOut) {
                 document.getElementById('message').style.display = 'block';
-                const song = document.getElementById('song');
-                song.play().catch(err => console.error('Audio playback failed:', err));
             }
         }
 
